@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/users/', include('users.urls')),  # point to our new users app
     path('api/evasion/', include('evasion.urls')),
+    path('api/advanced/', include('advanced_mode.urls')),
 ]
 
 if settings.DEBUG:

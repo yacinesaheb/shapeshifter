@@ -176,6 +176,50 @@ export const AuthProvider = ({ children }) => {
     return res.data;
   };
 
+  // 🔴 ADVANCED PIPELINE FUNCTIONS
+  const startExperiment = async (file) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("No token found");
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const res = await axios.post("http://localhost:8000/api/advanced/start/", formData, {
+      headers: { "Content-Type": "multipart/form-data", Authorization: `Token ${token}` },
+    });
+    return res.data;
+  };
+
+  const mutateExperiment = async (originalPath, perturbationName) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("No token found");
+
+    const res = await axios.post("http://localhost:8000/api/advanced/mutate/", {
+      original_path: originalPath,
+      perturbation: perturbationName
+    }, {
+      headers: { Authorization: `Token ${token}` },
+    });
+    return res.data;
+  };
+
+  const analyzeExperiment = async (excelOriginal, excelVariant, rateOriginal, rateVariant, originalPath, variantPath) => {
+    const token = localStorage.getItem("token");
+    if (!token) throw new Error("No token found");
+
+    const formData = new FormData();
+    formData.append("excel_original", excelOriginal);
+    formData.append("excel_variant", excelVariant);
+    formData.append("rate_original", rateOriginal);
+    formData.append("rate_variant", rateVariant);
+    formData.append("original_file_path", originalPath);
+    formData.append("variant_file_path", variantPath);
+
+    const res = await axios.post("http://localhost:8000/api/advanced/analyze/", formData, {
+      headers: { "Content-Type": "multipart/form-data", Authorization: `Token ${token}` },
+    });
+    return res.data;
+  };
+
 
 
 
@@ -197,6 +241,9 @@ export const AuthProvider = ({ children }) => {
         getStats,
         mutatePayload,
         getAdminFiles,
+        startExperiment,
+        mutateExperiment,
+        analyzeExperiment,
       }}
 
 

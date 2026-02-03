@@ -12,7 +12,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center h-full px-4">
         {/* Logo */}
         <Link to="/" className="hover:text-green-300 transition">
-        <h1 className="text-2xl font-bold tracking-widest">Shapeshifter</h1>
+          <h1 className="text-2xl font-bold tracking-widest">Shapeshifter</h1>
         </Link>
         {/* Desktop Links */}
         <div className="hidden md:flex gap-6 items-center">
@@ -24,6 +24,9 @@ export default function Navbar() {
             <>
               <Link to="/dashboard" className="hover:text-green-300 transition">
                 Dashboard
+              </Link>
+              <Link to="/advanced" className="hover:text-green-300 transition">
+                Advanced
               </Link>
               <Link to="/upload" className="hover:text-green-300 transition">
                 Upload
@@ -63,9 +66,8 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-gray-900/90 backdrop-blur-md transition-all duration-300 overflow-hidden ${
-          isOpen ? "max-h-96 py-4" : "max-h-0"
-        }`}
+        className={`md:hidden bg-gray-900/90 backdrop-blur-md transition-all duration-300 overflow-hidden ${isOpen ? "max-h-96 py-4" : "max-h-0"
+          }`}
       >
         <div className="flex flex-col items-center gap-4">
           <Link
@@ -84,6 +86,13 @@ export default function Navbar() {
                 className="hover:text-green-300 transition"
               >
                 Dashboard
+              </Link>
+              <Link
+                to="/advanced"
+                onClick={() => setIsOpen(false)}
+                className="hover:text-green-300 transition"
+              >
+                Advanced
               </Link>
               <Link
                 to="/upload"

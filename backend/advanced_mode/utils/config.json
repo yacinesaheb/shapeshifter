@@ -1,0 +1,6 @@
+{
+    "scorings": {
+        "weight_vt": 0.7,
+        "weight_ssdeep": 0.3
+    }
+}

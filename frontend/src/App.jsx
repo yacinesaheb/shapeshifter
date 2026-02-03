@@ -11,6 +11,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Upload from "./pages/Upload";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdvancedMode from "./pages/AdvancedMode";
 
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/upload" element={<ProtectedRoute><Upload /></ProtectedRoute>} />
               <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+              <Route path="/advanced" element={<ProtectedRoute><AdvancedMode /></ProtectedRoute>} />
               <Route path="/admin" element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
 
             </Routes>
